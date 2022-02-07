@@ -1,0 +1,12 @@
+To run these examples you need to have access to Synology Chat. Create a Bot (for two way communication) or incomming webhook (for Java -> Synology only), to run examples you need to configure config/application.properties (see template in config folder) with url and token.
+
+This is a demo on how to call Synology Chat with Java. This project contains:
+- some examples (see examples package) on how to call Synology Chat API
+- how to receive messages - demo is based on SpringBoot framework:
+-- see ChatDemoApplication on main to run the demo
+-- see ChatDemoWebsiteController on the controller and all the API that this server demo exposes
+
+This Demo uses external libraries:
+- Springboot
+- Apache HttpComponents
+- Jackson
