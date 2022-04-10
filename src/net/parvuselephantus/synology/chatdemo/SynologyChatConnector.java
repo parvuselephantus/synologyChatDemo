@@ -128,7 +128,7 @@ public class SynologyChatConnector {
 
   	    // convert `ObjectNode` to pretty-print JSON
   	    // without pretty-print, use `user.toString()` method
-  	    String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(user);
+  	    String json = mapper.writer().writeValueAsString(user);
   	    sendPost(serverURL + "/webapi/entry.cgi?api=SYNO.Chat.External&method=incoming&version=2&token=%22" + token + "%22", json);
 	}
 	/**
@@ -144,7 +144,7 @@ public class SynologyChatConnector {
 
 	    // convert `ObjectNode` to pretty-print JSON
 	    // without pretty-print, use `user.toString()` method
-	    String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(user);
+	    String json = mapper.writer().writeValueAsString(user);
 	    sendPost(serverURL + "/webapi/entry.cgi?api=SYNO.Chat.External&method=chatbot&version=2&token=%22" + token + "%22", json);
 	}
 	
@@ -160,9 +160,8 @@ public class SynologyChatConnector {
         List<NameValuePair> urlParameters = new ArrayList<>();
         urlParameters.add(new BasicNameValuePair("payload", payload == null ? "{\"token\": \"" + token + "\"}" : payload));
 
-        post.setEntity(new UrlEncodedFormEntity(urlParameters));
-        
-        post.addHeader("Content-Type", "application/json");
+        post.setEntity(new UrlEncodedFormEntity(urlParameters, "UTF-8"));
+        post.addHeader("Content-Type", "application/json;charset=UTF-8");
 
         try (CloseableHttpResponse response = httpClient.execute(post))
         {

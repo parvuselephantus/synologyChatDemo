@@ -28,7 +28,7 @@ public class SimpleExampleSendMessage {
 	
 	//Send message to user
 	public void sendPost() throws Exception {
-		String msgToSend = "No need to escape these: \"'=?&{}$#";
+		String msgToSend = "No need to escape these: \"'=?&{}$# ó³¿œ¹æ ÜÖÄ";
 		
 		connector.sendWebhookPost(msgToSend);
 		
